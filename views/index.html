@@ -9,7 +9,25 @@
 </head>
 <body>
     <div class = "container">
+        <form id="inputForm" method="post">
+            <label for="name">Name:</label>
+            <input name="name" id="name" type="text">
+            <br />
+            <label for="age">Age:</label>
+            <input name="age" id="age" maxlength="2" min="18" max="65" type="number">
+            <br />
 
+            <label for="living">Status:</label>
+            <input name="living" id="living" type="radio" value="true">Alive
+            <input name="living" id="living" type="radio" value="false">Dead
+            <br/>
+
+            <label for="score">Score:</label>
+            <input name="score" id="score" type="number" maxlength="3" min="0" max="100">
+            <br/>
+
+            <input type="submit" id="submit" value="Submit">
+        </form>
     </div>
 
 <script src="/vendors/jquery/dist/jquery.min.js"></script>

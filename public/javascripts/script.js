@@ -30,7 +30,7 @@ function appendData(){
         appendChild.children('#age').append(data[i].age);
         appendChild.children('#score').append(data[i].score);
         if(data[i].living == true){
-            appendChild.children('#living').append("alive");
+            appendChild.children('#living').append("Alive");
         } else {
             appendChild.children('#living').append("DEAD!");
         }
@@ -67,6 +67,4 @@ $(document).ready(function(){
             getData();
         }
     });
-
-
 });
