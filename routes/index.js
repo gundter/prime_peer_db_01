@@ -11,7 +11,7 @@ var limiter = RateLimit({
   message: "Too many requests from this IP, please try again later."
 });
 
-router.get('/template', function(request, response){
+router.get('/template', limiter, function(request, response){
   response.sendFile(path.join(__dirname, '../views/templates/template.html'));
 });
 
