@@ -30,12 +30,28 @@ router.get('/:id', function(request, response, next){
 });
 
 router.put('/:id', function(request, response, next){
-    Assignment.findByIdAndUpdate(request.params.id, request.body, function(err, post){
-        if(err){
-            console.log("Error!!", err)
+    const updateData = {};
+    const allowedFields = ['field1', 'field2', 'field3']; // Replace with actual fields
+    for (const key in request.body) {
+        if (allowedFields.includes(key)) {
+            const value = request.body[key];
+            // Validate the value (e.g., check type or sanitize)
+            if (typeof value === 'string' || typeof value === 'number') { // Example validation
+                updateData[key] = value;
+            }
         }
-        response.json(post);
-    });
+    }
+    Assignment.findByIdAndUpdate(
+        request.params.id,
+        { $set: updateData }, // Use $set operator for safe updates
+        { new: true },
+        function(err, post){
+            if(err){
+                console.log("Error!!", err)
+            }
+            response.json(post);
+        }
+    );
 });
 
 router.delete('/:id', function(request, response, next){
