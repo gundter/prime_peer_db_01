@@ -34,15 +34,24 @@ router.put('/:id', function(request, response, next){
     const allowedFields = ['field1', 'field2', 'field3']; // Replace with actual fields
     for (const key in request.body) {
         if (allowedFields.includes(key)) {
-            updateData[key] = request.body[key];
+            const value = request.body[key];
+            // Validate the value (e.g., check type or sanitize)
+            if (typeof value === 'string' || typeof value === 'number') { // Example validation
+                updateData[key] = value;
+            }
         }
     }
-    Assignment.findByIdAndUpdate(request.params.id, updateData, { new: true }, function(err, post){
-        if(err){
-            console.log("Error!!", err)
+    Assignment.findByIdAndUpdate(
+        request.params.id,
+        { $set: updateData }, // Use $set operator for safe updates
+        { new: true },
+        function(err, post){
+            if(err){
+                console.log("Error!!", err)
+            }
+            response.json(post);
         }
-        response.json(post);
-    });
+    );
 });
 
 router.delete('/:id', function(request, response, next){
