@@ -30,7 +30,14 @@ router.get('/:id', function(request, response, next){
 });
 
 router.put('/:id', function(request, response, next){
-    Assignment.findByIdAndUpdate(request.params.id, request.body, function(err, post){
+    const updateData = {};
+    const allowedFields = ['field1', 'field2', 'field3']; // Replace with actual fields
+    for (const key in request.body) {
+        if (allowedFields.includes(key)) {
+            updateData[key] = request.body[key];
+        }
+    }
+    Assignment.findByIdAndUpdate(request.params.id, updateData, { new: true }, function(err, post){
         if(err){
             console.log("Error!!", err)
         }
