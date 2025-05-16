@@ -19,6 +19,6 @@
     "mongo": "^0.1.0",
     "mongoose": "^8.14.3",
     "morgan": "~1.10.0",
-    "serve-favicon": "~2.2.0"
+    "serve-favicon": "~2.5.0"
   }
 }
