@@ -17,7 +17,7 @@
     "grunt-contrib-uglify": "^0.9.1",
     "jquery": "^3.7.1",
     "mongo": "^0.1.0",
-    "mongoose": "^8.14.3",
+    "mongoose": "^8.15.1",
     "morgan": "~1.10.0",
     "serve-favicon": "~2.5.0",
     "express-rate-limit": "^7.5.0"
